@@ -21,19 +21,18 @@ model = LinearRegression().fit(X_train, Y)
 
 @app.route("/predict")
 def predict():
-    
-        w = float(request.args.get("W", 0))
-        x = float(request.args.get("X", 0))
-        prediction = model.predict([[w, x]])[0]
+    w = float(request.args.get("W", 0))
+    x = float(request.args.get("X", 0))
+    prediction = model.predict([[w, x]])[0]
 
-        # Log prediction
-        with open("output.txt", "w") as f:
-            f.write(f"Input W: {w}, X: {x}\nPrediction: {prediction:.2f}\n")
+    # Log prediction
+    with open("output.txt", "w") as f:
+        f.write(f"Input W: {w}, X: {x}\nPrediction: {prediction:.2f}\n")
 
-        return jsonify({
+    return jsonify({
             "input": {"W": w, "X": x},
             "predicted_engagement_score": round(prediction, 2)
         })
 
 if __name__ == "__main__":
-app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5000)
