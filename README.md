@@ -1,1 +1,27 @@
-# Assignment-2
+# Assignment-2 ESG Engagement Score Predictor API
+
+This repository contains a lightweight Flask application that provides a machine learning–based prediction API for estimating ESG (Environmental, Social, and Governance) engagement scores. It uses a simple linear regression model trained on synthetic data with treatment indicators (W) and sustainability spending values (X).
+
+## 🔧 Components Overview
+
+### 1. `app.py`
+This is the main application file that sets up a Flask API server. It exposes a `/predict` route, which takes input values for `W` and `X` (via GET parameters), passes them through a trained `LinearRegression` model, and returns the predicted engagement score (`Ŷi`) as a JSON response.
+
+### 2. `Dockerfile`
+The `Dockerfile` defines a reproducible environment using a Python 3.10 base image. It installs required dependencies and launches the Flask app in a self-contained container, enabling consistent behavior across different systems and environments.
+
+### 3. `requirements.txt`
+This file lists the necessary Python packages, such as `flask`, `scikit-learn`, and `numpy`, which are automatically installed during the Docker build process.
+
+### 🚀 How to Run with Docker
+docker build -t esg-api .
+docker run -p 5000:5000 esg-api
+Then, test the API:
+curl "http://localhost:5000/predict?W=1&X=20"
+✅ Example Response:
+{
+  "input": {"W": 1.0, "X": 20},
+  "predicted_engagement_score": 123.67
+}
+
+
