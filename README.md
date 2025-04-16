@@ -14,14 +14,14 @@ The `Dockerfile` defines a reproducible environment using a Python 3.10 base ima
 This file lists the necessary Python packages, such as `flask`, `scikit-learn`, and `numpy`, which are automatically installed during the Docker build process.
 
 ### 🚀 How to Run with Docker
-docker build -t esg-api .
-docker run -p 5000:5000 esg-api
-Then, test the API:
+1.docker build -t esg-api .
+2.docker run -p 5000:5000 esg-api
+3.Then, test the API:
 curl "http://localhost:5000/predict?W=1&X=20"
 ✅ Example Response:
 {
   "input": {"W": 1.0, "X": 20},
-  "predicted_engagement_score": 123.67
+  "predicted_engagement_score": 117.16
 }
 
 
